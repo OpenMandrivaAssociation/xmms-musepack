@@ -1,11 +1,8 @@
 %define name xmms-musepack
-%define version 1.2
+%define version 1.2.1
 %define filename %name-%version
-%define release %mkrel 8
+%define release %mkrel 1
 %define inst_dir %_libdir/xmms/
-#fixed2
-%{?!mkrel:%define mkrel(c:) %{-c: 0.%{-c*}.}%{!?_with_unstable:%(perl -e '$_="%{1}";m/(.\*\\D\+)?(\\d+)$/;$rel=${2}-1;re;print "$1$rel";').%{?subrel:%subrel}%{!?subrel:1}.%{?distversion:%distversion}%{?!distversion:%(echo $[%{mdkversion}/10])}}%{?_with_unstable:%{1}}%{?distsuffix:%distsuffix}%{?!distsuffix:mdk}}
-
 
 Summary:	XMMS plugin which plays musepack encoded audio files
 Name:		%{name}
@@ -27,9 +24,15 @@ mp+ or mpp.
 
 %prep
 %setup -q -n %filename
+rm -f configure
+libtoolize --copy --force
+aclocal
+autoconf
+automake
 
 %build
-%configure
+%define _disable_ld_no_undefined 1
+%configure2_5x
 %make
 
 %install
