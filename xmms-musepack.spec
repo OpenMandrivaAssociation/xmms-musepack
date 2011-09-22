@@ -1,7 +1,7 @@
 %define name xmms-musepack
 %define version 1.2.1
 %define filename %name-%version
-%define release %mkrel 2
+%define release %mkrel 3
 %define inst_dir %_libdir/xmms/
 
 Summary:	XMMS plugin which plays musepack encoded audio files
