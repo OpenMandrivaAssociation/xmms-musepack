@@ -13,6 +13,11 @@ Group:		Sound
 Source:		http://musepack.origean.net/files/linux/plugins/%{filename}.tar.bz2
 Url:		https://www.musepack.net/
 Buildroot:	%{_tmppath}/%{name}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	xmms-devel >= 1.2.10
 BuildRequires:	libmpcdec-devel
 BuildRequires:	taglib-devel
